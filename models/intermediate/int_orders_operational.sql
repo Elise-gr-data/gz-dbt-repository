@@ -1,6 +1,7 @@
 SELECT 
     orders_id,
     date_date,
+    revenue,
     (margin+shipping_fee-logcost-ship_cost) AS operational_margin,
     quantity,
     purchase_cost,
