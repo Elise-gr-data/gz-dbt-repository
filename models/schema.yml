@@ -54,4 +54,32 @@ sources:
           description: transportation costs
         - name: ship_cost
           description: costs of shipping
+
+models:
+- name: int_orders_margin
+  description: sum of margin, revenue, purchase_cost by orders_id (date_date level remains available)
+  columns:
+    - name: orders_id
+      description: identifier of orders
+      tests:
+        - unique
+        - not_null
+    - name: margin
+      description: revenue - purchase_cost (purchase_cost = purchase_price * quantity)
+- name: int_orders_operational
+  description: provides the operational margin, which corresponds to: margin + shipping_fee (paid by customer) - shipping and logistic costs
+  columns:
+    - name: orders_id
+      description: identifier of orders
+      tests:
+        - unique
+        - not_null
+- name: int_sales_margin
+  description: gives the margin by products_id for each order_id (with date_date)
+  columns:
+    - name: "(products_id || '-' || orders_id)"
+      tests:
+        - unique
+        - not_null       
+
       
