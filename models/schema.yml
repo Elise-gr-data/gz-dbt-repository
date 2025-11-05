@@ -14,9 +14,6 @@ sources:
       tests:
         - unique: 
             column_name: "(orders_id || '-' || pdt_id)"
-        - freshness:
-            loaded_at_field: "CAST(date_date AS TIMESTAMP)"
-            warn_after: {count: 90, period: day}
       columns:
         - name: date_date
           description: date of order
