@@ -66,3 +66,32 @@ models:
         description: identifier of the products
         tests:
           - not_null
+      - name: margin
+        description: margin = revenue-purchase_cost (purchase_cost = purchase_price * quantity)
+        tests:
+          - not_null
+  - name: int_orders_margin
+    description: margin and other KPIs grouped by orders_id (products_id not available annymore)
+    columns:
+      - name: orders_id
+        description: identifier of the orders
+        tests:
+          - unique
+          - not_null
+      - name: margin
+        description: margin being revenue less purchase_cost
+        tests:
+          - not_null
+  - name: int_order_operational
+    description: operational margin (margin + shipping_fee paid by customers - shipping_cost - log_cost)
+    columns:
+      - name: orders_id
+        description: identifier of orders
+        tests:
+          - unique
+          - not_null
+      - name: operational_margin
+        description: margin + shipping fee - logistic and shipping costs
+        tests:
+          - not_null
+          
